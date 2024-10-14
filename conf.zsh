@@ -20,11 +20,6 @@ HELP
 	exit "$1"
 }
 
-echo "${0:A:h}"
-
-
-exit
-
 zparseopts -F -E -D\
   m:=accion -modificar:=accion\
   b=accion -borrar=accion\
