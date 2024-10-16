@@ -89,7 +89,7 @@ encontrar_llave_mas_similar()
   [[ -z "$dicc" ]] && return 1
   [[ -z "$patron" ]] && return 1
 
-  mas_similar="$( grep "$patron" <<< $(printf "%s\n" ${(kP)dicc} ) | head -1 )"
+  mas_similar="$( grep -i "$patron" <<< $(printf "%s\n" ${(kP)dicc} ) | head -1 )"
 
   [[ -z "$mas_similar" ]] && return 1
 
