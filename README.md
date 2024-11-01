@@ -1,17 +1,16 @@
-# **cuentas_manager**
+# **configuration_manager**
 
-Script para administrar archivos de configuración. Se almacenan rutas en un diccionario, y se acceden por aliases, que son las llaves.
+Script to manage configuration files. aliases and paths for files are stored in a dicionary, with kyes as aliases and paths as values.
 
 ## Installation
 
-No disponible para instalacion.
+Not available for Installation.
 
 ## Usage
 
 ## Contributing
 
-No se aceptan contribuciones.
+Not acepting contributions currently.
 
 ## License
 
-[MIT](https://choosealicense.com/licenses/mit/)
