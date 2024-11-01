@@ -35,7 +35,7 @@ conf_alias="$1"
 
 DIR_SCRIPT="${0:A:h}"
 MODULOS="$DIR_SCRIPT/modulos"
-CONF="$DIR_SCRIPT/conf_files.sh"
+CONF="$HOME/.config/conf/conf_files.sh"
 
 . $MODULOS/funciones_dicc.sh
 . $MODULOS/funciones_error.sh
