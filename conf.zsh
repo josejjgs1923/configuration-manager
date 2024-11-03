@@ -1,4 +1,4 @@
-#!/data/data/com.termux/files/usr/bin/zsh
+#!/usr/bin/env zsh
 ## shellcheck --shell=bash
 
 ayuda() {
