@@ -81,7 +81,7 @@ then
         --bind="enter:become( nvim {2} )"
       ;;
     todos)
-      print_tabla conf_files  
+      print_tabla conf_files "," | column -t --table-columns "alias:,ruta:"  -s "," -o "|"
       ;;
   esac
 
