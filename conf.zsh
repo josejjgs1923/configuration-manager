@@ -70,8 +70,15 @@ then
 
   case "${completo[1]}" in
     -i|--fzf)
-      imp(){printf "%s\n" "$1"}
-      iterar_valores conf_files imp | fzf --query "$*" --bind "enter:become( nvim {} )"
+
+      print_tabla conf_files "\t" | fzf --cycle\
+        --query "$*"\
+        --prompt "elegir:"\
+        -d "\t"\
+        --with-nth "1"\
+        --preview-window="down,9%"\
+        --preview="echo {2}"\
+        --bind="enter:become( nvim {2} )"
       ;;
     todos)
       print_tabla conf_files  
