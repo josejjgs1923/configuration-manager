@@ -10,7 +10,7 @@ modificar_entrada()
   [[ -z "$dicc" ]] && return 1
   [[ -z "$llave" ]] && return 1
 
-  eval "${dicc}[${llave}]=${valor}"
+  eval "${dicc}[${llave}]=\"${valor}\""
 }
 
 eliminar_entrada()
