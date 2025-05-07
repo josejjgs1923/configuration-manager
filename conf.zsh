@@ -24,7 +24,6 @@ zparseopts -F -E -D\
   m:=accion -modificar:=accion\
   b=accion -borrar=accion\
   h=_ayuda -help=_ayuda\
-  x=flags -source=flags\
   p=flags -print=flags\
   i=completo -fzf=completo || ayuda 1
 
