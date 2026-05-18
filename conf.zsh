@@ -32,6 +32,7 @@ zparseopts -F -E -D\
 
 conf_alias="$1"
 
+FZF_DEFAULT_OPTS_FILE=~/.config/fzf/fzfrc
 DIR_SCRIPT="${0:A:h}"
 MODULOS="$DIR_SCRIPT/modulos"
 CONF="$HOME/.config/conf/conf_files.sh"
@@ -85,15 +86,22 @@ then
   esac
 
 else
-  archivo=$( encontrar_valor_llave_mas_similar conf_files "$conf_alias" ) || 
+  ruta=$( encontrar_valor_llave_mas_similar conf_files "$conf_alias" ) || 
   { error_exit "no se encontro archivo para '$conf_alias'." }
 
   case "${flags[1]}" in
     -p|--print)
-      echo -n "$archivo"
+      echo -n "$ruta"
       ;;
     abrir)
-      nvim "$archivo"
+      if [[ -d "$ruta" ]]
+      then
+        cd "$ruta"
+      else
+        cd "${ruta:A:h}"
+      fi
+
+      nvim "$ruta"
       ;;
   esac 
 fi
