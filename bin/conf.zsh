@@ -1,25 +1,16 @@
 #!/usr/bin/env zsh
 ## shellcheck --shell=bash
 
-ayuda() {
-  less -FEXR <<- HELP
-  uso: ${ZSH_ARGZERO:t} [conf_alias] [opciones]
+DIR_SCRIPT="${0:A:h}"
+LIB="$DIR_SCRIPT/../lib"
 
-  organizar archivos de configuracion. Abrir por defecto 
-  el archivo del alias. Sin alias, muestra todas los alias
-  registrados.
+CONF="$HOME/.config/conf/conf_files.sh"
+FZF_DEFAULT_OPTS_FILE=~/.config/fzf/fzfrc
 
-
-  opciones:
-    --help, -h              mostrar esta ayuda y salir
-    -m, --modificar ruta    agregar rutas con alias dados.   
-    -b, --borrar            borrar alias y registro archivo.   
-    -p, --print             mostrar ruta del alias.
-    -i, --fzf               usar fzf para ver registros.
-HELP
-	exit "$1"
-}
-
+. $LIB/funciones_dicc.sh
+. $LIB/funciones_error.sh
+. $LIB/util.sh
+ 
 zparseopts -F -E -D\
   m:=accion -modificar:=accion\
   b=accion -borrar=accion\
@@ -27,20 +18,11 @@ zparseopts -F -E -D\
   p=flags -print=flags\
   i=completo -fzf=completo || ayuda 1
 
-
 [[ -n "${_ayuda:+1}" ]] && ayuda 0
 
+. $CONF
 conf_alias="$1"
 
-FZF_DEFAULT_OPTS_FILE=~/.config/fzf/fzfrc
-DIR_SCRIPT="${0:A:h}"
-MODULOS="$DIR_SCRIPT/modulos"
-CONF="$HOME/.config/conf/conf_files.sh"
-
-. $MODULOS/funciones_dicc.sh
-. $MODULOS/funciones_error.sh
-. $CONF
- 
 [[ -z "${flags[1]}" ]] && flags[1]=abrir
 [[ -z "$conf_alias" && -z "${completo[1]}" ]] && completo[1]=todos
 
